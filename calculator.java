@@ -61,6 +61,14 @@ public class calculator {
                                 (membersExpression[1].equals("-") && romanToInt(membersExpression[0]) > romanToInt(membersExpression[2])))) {
                     a = romanToInt(membersExpression[0]);
                     b = romanToInt(membersExpression[2]);
+                    if (calculat(a, b, membersExpression[1]) < 1) {
+                        try {
+                            throw new IOException();
+                        } catch (IOException e) {
+                            System.out.println("throws Exception //т.к. результат меньше единицы");
+                            return;
+                        }
+                    }
                     intToRoman(calculat(a, b, membersExpression[1]));
                 } else {
                     try {
