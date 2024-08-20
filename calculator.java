@@ -41,18 +41,18 @@ public class calculator {
                     System.out.println(calculat(a, b, membersExpression[1]));
                 } else {
                     try {
-                        throw new IOException();
+                        throw new IOException("используются одновременно разные системы счисления");
                     } catch (IOException e) {
-                        System.out.println("throws Exception //т.к. используются одновременно разные системы счисления");
+                        System.out.println(e.getMessage());
                         return;
                     }
                 }
             } else if (isRoman(membersExpression[0])) {
                 if (isArabic(membersExpression[2])) {
                     try {
-                        throw new IOException();
+                        throw new IOException("используются одновременно разные системы счисления");
                     } catch (IOException e) {
-                        System.out.println("throws Exception //т.к. используются одновременно разные системы счисления");
+                        System.out.println(e.getMessage());
                         return;
                     }
                 }
@@ -63,35 +63,34 @@ public class calculator {
                     b = romanToInt(membersExpression[2]);
                     if (calculat(a, b, membersExpression[1]) < 1) {
                         try {
-                            throw new IOException();
+                            throw new IOException("результат меньше единицы");
                         } catch (IOException e) {
-                            System.out.println("throws Exception //т.к. результат меньше единицы");
+                            System.out.println(e.getMessage());
                             return;
                         }
                     }
                     intToRoman(calculat(a, b, membersExpression[1]));
                 } else {
                     try {
-                        throw new IOException();
+                        throw new IOException("в римской системе нет отрицательных чисел");
                     } catch (IOException e) {
-                        System.out.println("throws Exception //т.к. в римской системе нет отрицательных чисел");
+                        System.out.println(e.getMessage());
                         return;
                     }
                 }
             } else {
                 try {
-                    throw new IOException();
+                    throw new IOException("строка не является математической операцией");
                 } catch (IOException e) {
-                    System.out.println("throws Exception //т.к. строка не является математической операцией");
+                    System.out.println(e.getMessage());
                     return;
                 }
             }
         } else {
             try {
-                throw new IOException();
+                throw new IOException("формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *) или отсутствуют пробелы");
             } catch (IOException e) {
-                System.out.println("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)\n" +
-                        "\n");
+                System.out.println(e.getMessage());
                 return;
             }
         }
